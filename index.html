@@ -50,6 +50,7 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:5px}
 h1{margin:0;font:800 clamp(3.7rem,19.5vw,12rem)/.9 var(--serif);letter-spacing:-.02em;word-spacing:.08em}
 h1 span{display:block}
 h1 span+span{margin-left:.45em}
+.sub{margin:1.25rem 0 0;max-width:24rem;color:rgba(246,241,228,.75);font-size:1.05rem}
 .fam{--w:56vw;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .fam li{width:var(--w);justify-self:start}
 .fam li:nth-child(even){margin-left:-11vw;margin-top:14vw}
@@ -93,13 +94,6 @@ h1 span+span{margin-left:.45em}
 .site a:hover{color:var(--cream)}
 .site a[aria-current]{color:var(--cream);border-bottom-color:var(--gold)}
 
-/* Cuối trang: đường sang trang Người Sáng Chế */
-.more{--bb:var(--gold);--bf:var(--ink);--rad:.4rem;--f:var(--serif);padding:4rem 0 calc(env(safe-area-inset-bottom,0px) + 3rem);
-  background-image:linear-gradient(rgba(246,241,228,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(246,241,228,.06) 1px,transparent 1px);background-size:3rem 3rem;background-position:-1px -1px}
-.more h2{margin:0;font:800 clamp(2.6rem,11vw,5rem)/1 var(--serif);letter-spacing:-.02em}
-.more p{margin:.9rem 0 0;max-width:30rem;color:rgba(246,241,228,.75)}
-.more .btn{margin-top:1.5rem}
-.more .btn:focus-visible{outline-color:var(--cream)}
 noscript p{padding:2rem 0;margin:0}
 noscript a{color:var(--cream)}
 
@@ -126,6 +120,7 @@ noscript a{color:var(--cream)}
   <div class="in">
     <nav class="site" aria-label="Các trang"><a href="https://kientaomohinh.vercel.app/" aria-current="page">Kẻ Kiến Tạo</a><a href="https://sangchecongcu.vercel.app/">Người Sáng Chế</a></nav>
     <h1><span>Kiến Tạo</span><span>Mô Hình</span></h1>
+    <p class="sub">Những mô hình đã dựng và đang chạy thật. Cuộn xuống xem từng vòng.</p>
   </div>
   <div class="in"><ul class="fam" id="fam"></ul></div>
   <a class="cue" href="#m1" aria-label="Cuộn xuống xem các mô hình"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a>
@@ -134,11 +129,7 @@ noscript a{color:var(--cream)}
 <main id="models"></main>
 <noscript><div class="in"><p>Cần bật JavaScript để xem đầy đủ. Các mô hình: <a href="https://diembanle.vercel.app/">Điểm Bán Lẻ</a>, <a href="https://gathavuonchuoi.vercel.app/">Gà Thả Vườn Chuối</a>.</p></div></noscript>
 
-<section class="more" aria-labelledby="h-more"><div class="in">
-  <h2 id="h-more">Người Sáng Chế</h2>
-  <p>Công cụ số cho tiệm nhỏ: đặt hàng, tính giá, bán hàng. Bấm một món để dùng thử ngay.</p>
-  <a class="btn" href="https://sangchecongcu.vercel.app/">Xem công cụ</a>
-</div></section>
+
 
 <script>
 /* Thêm mô hình mới: copy một khối trong MODELS rồi đổi chữ, link, màu. Trang tự dựng dải màu và đồng xu.
