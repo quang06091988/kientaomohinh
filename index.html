@@ -11,7 +11,6 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="manifest" href="manifest.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kientaomohinh.vercel.app/">
 <meta property="og:site_name" content="Kẻ Kiến Tạo">
@@ -88,6 +87,22 @@ h1 span+span{margin-left:.45em}
 .btn:active{transform:scale(.97)}
 .band .btn:focus-visible{outline-color:var(--fg)}
 
+/* Dải liên kết chung giữa hai trang */
+.site{display:flex;flex-wrap:wrap;gap:1.5rem;margin:0 0 1.25rem;font:600 .95rem/1.2 var(--sans)}
+.site a{display:inline-flex;align-items:center;min-height:2.75rem;color:rgba(246,241,228,.7);text-decoration:none;border-bottom:2px solid transparent}
+.site a:hover{color:var(--cream)}
+.site a[aria-current]{color:var(--cream);border-bottom-color:var(--gold)}
+
+/* Cuối trang: đường sang trang Người Sáng Chế */
+.more{--bb:var(--gold);--bf:var(--ink);--rad:.4rem;--f:var(--serif);padding:4rem 0 calc(env(safe-area-inset-bottom,0px) + 3rem);
+  background-image:linear-gradient(rgba(246,241,228,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(246,241,228,.06) 1px,transparent 1px);background-size:3rem 3rem;background-position:-1px -1px}
+.more h2{margin:0;font:800 clamp(2.6rem,11vw,5rem)/1 var(--serif);letter-spacing:-.02em}
+.more p{margin:.9rem 0 0;max-width:30rem;color:rgba(246,241,228,.75)}
+.more .btn{margin-top:1.5rem}
+.more .btn:focus-visible{outline-color:var(--cream)}
+noscript p{padding:2rem 0;margin:0}
+noscript a{color:var(--cream)}
+
 @media (min-width:900px){
   .hero{justify-content:space-between;padding-top:calc(env(safe-area-inset-top,0px) + 3.5rem)}
   .cue{display:none}
@@ -108,12 +123,22 @@ h1 span+span{margin-left:.45em}
 <body>
 
 <header class="hero">
-  <div class="in"><h1><span>Kiến Tạo</span><span>Mô Hình</span></h1></div>
+  <div class="in">
+    <nav class="site" aria-label="Các trang"><a href="https://kientaomohinh.vercel.app/" aria-current="page">Kẻ Kiến Tạo</a><a href="https://sangchecongcu.vercel.app/">Người Sáng Chế</a></nav>
+    <h1><span>Kiến Tạo</span><span>Mô Hình</span></h1>
+  </div>
   <div class="in"><ul class="fam" id="fam"></ul></div>
   <a class="cue" href="#m1" aria-label="Cuộn xuống xem các mô hình"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a>
 </header>
 
 <main id="models"></main>
+<noscript><div class="in"><p>Cần bật JavaScript để xem đầy đủ. Các mô hình: <a href="https://diembanle.vercel.app/">Điểm Bán Lẻ</a>, <a href="https://gathavuonchuoi.vercel.app/">Gà Thả Vườn Chuối</a>.</p></div></noscript>
+
+<section class="more" aria-labelledby="h-more"><div class="in">
+  <h2 id="h-more">Người Sáng Chế</h2>
+  <p>Công cụ số cho tiệm nhỏ: đặt hàng, tính giá, bán hàng. Bấm một món để dùng thử ngay.</p>
+  <a class="btn" href="https://sangchecongcu.vercel.app/">Xem công cụ</a>
+</div></section>
 
 <script>
 /* Thêm mô hình mới: copy một khối trong MODELS rồi đổi chữ, link, màu. Trang tự dựng dải màu và đồng xu.
@@ -185,7 +210,7 @@ MODELS.forEach(function(m,i){
     '<div class="t"><h2 id="h-'+id+'" aria-label="'+esc(title)+'">'+m.name.map(function(w){return '<span aria-hidden="true">'+esc(w)+'</span>'}).join("")+'</h2>'+
     '<p class="line">'+esc(m.line)+'</p></div>'+
     '<svg class="ring" viewBox="0 0 360 360" role="img" aria-label="Vòng bốn bước: '+esc(m.steps.join(", "))+'">'+ring(m,false,true,!calm)+'</svg>'+
-    '<a class="btn" href="'+esc(m.url)+'" target="_blank" rel="noopener">Xem mô hình</a></div>';
+    '<a class="btn" href="'+esc(m.url)+'" target="_blank" rel="noopener" aria-label="Xem mô hình '+esc(title)+' (mở tab mới)">Xem mô hình</a></div>';
   main.appendChild(sec);
 });
 
